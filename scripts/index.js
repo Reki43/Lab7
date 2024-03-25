@@ -76,10 +76,10 @@ function setup() {
             outputNodes[0].innerHTML = `You clicked the <b>${tile.alt}</b>`;
 
             if (tile.alt === getCard()) {
-                outputNodes[1].textContent = 'You win';
+                outputNodes[1].textContent = 'You win!';
                 showResults();
             } else {
-                outputNodes[1].textContent = 'You lose';
+                outputNodes[1].textContent = 'Not quite';
                 if (tries > 1) {
                     pause();
                 } else {
@@ -118,9 +118,11 @@ function activate() {
         tile.style.cursor = 'pointer';
     }
     getPanel().classList.toggle('dim', false);
+    getNumberInput().toggleAttribute('disabled', true);
     getCheckbox().toggleAttribute('checked', false);
     getContinueBtn().classList.toggle('hidden', true);
     getShowBtn().toggleAttribute('disabled', false);
+    getCheckbox().checked = false
 }
 
 
@@ -149,6 +151,7 @@ function play() {
     getRestartBtn().classList.toggle('hidden', true);
 
     getOutput().querySelectorAll('span:not(:last-child)').forEach(el => el.textContent = '');
+   
 }
 
 
